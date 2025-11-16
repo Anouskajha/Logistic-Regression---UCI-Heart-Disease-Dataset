@@ -14,11 +14,11 @@ def load_and_clean_data():
     # Define file path
     SRC = Path(r"C:\Users\Durba Jha\Downloads\heart_disease_uci.csv")
     
-    # Step 1: Load the data
+    #  Load the data
     print("Loading data...")
     df = pd.read_csv(SRC)
     
-    # Step 2: Check missing values before cleaning
+    #  Check missing values before cleaning
     print("\nMissing values in each column:")
     missing_counts = df.isnull().sum()
     for column in df.columns:
@@ -26,7 +26,7 @@ def load_and_clean_data():
         if count > 0:
             print(f"{column}: {count} missing values")
     
-    # Step 3: Handle missing values
+    #  Handle missing values
     # For numeric columns: fill with median
     numeric_columns = df.select_dtypes(include=[np.number]).columns
     for col in numeric_columns:
@@ -124,7 +124,7 @@ def run_logistic_regression(df, binary=True, scale=True):
     print("-" * 40)
     print(classification_report(y_test, preds))
 
-    # confusion matrix plot -> save
+    # confusion matrix plot 
     cm = confusion_matrix(y_test, preds)
     plt.figure(figsize=(5,4))
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
@@ -424,3 +424,4 @@ if __name__ == "__main__":
         with open(Path.cwd() / "error_log.txt", "w", encoding="utf-8") as f:
             f.write(tb)
         print(tb)
+
